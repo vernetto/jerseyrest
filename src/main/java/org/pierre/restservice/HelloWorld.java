@@ -34,14 +34,14 @@ public class HelloWorld {
 
 
     //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Produces({ MediaType.TEXT_HTML })
+    @Produces({ MediaType.APPLICATION_XML })
     @GET
     @Path("/{id}")
-    public String getEmployee(@PathParam("id") int id) {
+    public Employee getEmployee(@PathParam("id") int id) {
         System.out.println(simpleDateFormat.format(new Date()) + "getEmployee " + id);
         Employee employee = new Employee(id, "pierre" + id);
         System.out.println("returning " + employee);
-        return employee.toString();
+        return employee;
     }
 
 }

@@ -20,9 +20,9 @@ class HelloRestClientTest {
     @Test
     public void testClient() {
         Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target("http://localhost:7001//javaeetests-1.0-SNAPSHOT/api/");
+        WebTarget webTarget = client.target("http://localhost:9080/javaeetests-1.0-SNAPSHOT/api/");
         WebTarget employeeWebTarget = webTarget.path("employees/1");
-        Invocation.Builder invocationBuilder = employeeWebTarget.request(MediaType.TEXT_HTML);
+        Invocation.Builder invocationBuilder = employeeWebTarget.request(MediaType.APPLICATION_XML);
         Response response = invocationBuilder.get();
         System.out.println(response);
 

@@ -2,6 +2,7 @@ package org.pierre.restservice;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +18,7 @@ import java.util.Date;
 public class HelloWorld {
     @Context
     private UriInfo context;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYMMDD:HHmmss");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd:HHmmss");
 
     /**
      * Creates a new instance of HelloWorld
@@ -31,12 +32,16 @@ public class HelloWorld {
      * @return an instance of java.lang.String
      */
 
-    @Produces("text/html")
+
+    //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.TEXT_HTML })
     @GET
     @Path("/{id}")
     public String getEmployee(@PathParam("id") int id) {
-        System.out.println("getEmployee " + id);
-        return "<html lang=\"en\"><body><h1>Hello, World!!</h1></body></html>";
+        System.out.println(simpleDateFormat.format(new Date()) + "getEmployee " + id);
+        Employee employee = new Employee(id, "pierre" + id);
+        System.out.println("returning " + employee);
+        return employee.toString();
     }
 
 }

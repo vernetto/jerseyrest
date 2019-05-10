@@ -27,6 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HelloRestClientTest {
     private static final int N_THREADS = 10;
+
     private Logger logger = LoggerFactory.getLogger(HelloRestClientTest.class);
 
     private  static final String TARGET_URL_WILDFLY = "http://localhost:9080/javaeetests-1.0-SNAPSHOT/api/";
@@ -37,6 +38,9 @@ class HelloRestClientTest {
         runInParallel();
     }
 
+    /**
+     * Performs the actual invokation of the REST call
+     */
     private void invokeOnce() {
         logger.info("invoking service");
         try {
@@ -53,6 +57,9 @@ class HelloRestClientTest {
         }
     }
 
+    /**
+     * Forks a number of threads to perform parallel invokation
+     */
     private void runInParallel() {
         ExecutorService executorService = Executors.newFixedThreadPool(N_THREADS);
         Runnable runnable = () -> {
@@ -64,7 +71,7 @@ class HelloRestClientTest {
             }
         };
 
-        logger.info("executing runnable");
+        logger.info(String.format("executing %s runnable", N_THREADS));
 
         IntStream.range(0, N_THREADS).forEach((i) -> executorService.execute(runnable));
 

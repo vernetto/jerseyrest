@@ -39,7 +39,7 @@ class HelloRestClientTest {
     }
 
     /**
-     * Performs the actual invokation of the REST call
+     * Performs the actual invokation of the REST call. Hello scemo
      */
     private void invokeOnce() {
         logger.info("invoking service");

@@ -21,12 +21,12 @@ class HelloServiceTest {
     @Test
     void hello1() {
         HelloService helloService = new HelloService();
-        System.out.println(helloService.hello());
+        System.out.println(helloService.hello("pippo"));
     }
 
     @Test
     void hello2() {
         HelloService helloService = new HelloService();
-        System.out.println(helloService.hello());
+        System.out.println(helloService.hello("pippo"));
     }
 }
